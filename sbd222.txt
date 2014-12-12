@@ -1,0 +1,47 @@
+Mahasiswa	(NIM,NAMA,LAHIR,AGAMA,ALAMAT,KOTA,KODE_POS,TELEPHONE)
+MATAKULIAH	(KODE_MK,NAMA_MK,SKS,STATUS)
+DOSEN		(KODE_DOSEN,NAMA_DOSEN,ALAMAT,KOTA,KODE_POS,TELEPHONE)
+PRESTASI	(NPM,KODE_DOSEN,KODE_MK,NIL_MID,NIL_FIN)
+
+1.Tampilkan nim, nama dana nama matakuliah dari mahasiswa yang memiliki nilai final lebih kecil dari 60.
+2. tampilkan nim, nama, nama matakuliah, dan nama dosen dari mahasiswa yang mengambil mata kuliah "sistem basis data".
+3. tampilkan nim, nama, nama matakuliah dan nilai total dari mahasiswa yang memiliki nilai total lebih besar dari 100 dan urutkan data berdasarkan nama
+
+
+
+
+
+
+
+SELECT NIM, nama, nama_MK, NIL_FIN
+FROM prestasi
+INNER JOIN matakuliah
+ON prestasi.`Kode_MK`=matakuliah.`Kode_MK`
+INNER JOIN mahasiswa
+ON mahasiswa.`NIM`=prestasi.`NIM`
+WHERE prestasi.`NIL_FIN`<60
+
+SELECT Nim, nama, nama_MK, nama_Dosen
+FROM matakuliah
+INNER JOIN mahasiswa
+ON mahasiswa.`NIM`=matakuliah.`Kode_MK`
+INNER JOIN Dosen
+ON matakuliah.`Kode_MK`=Dosen.`Kode_Dosen`
+WHERE matakuliah.`nama_MK`="Sistem Basis Data"
+
+SELECT Nim, nama, nama_MK, nil_fin
+FROM prestasi
+INNER JOIN mahasiswa
+ON prsetasi.`NIM`=mahasiswa.`NIM`
+INNER JOIN matakuliah
+ON prestasi.`Kode_MK`=matakuliah.`Kode_MK`
+WHERE prestasi.`Nil_Fin`>100
+ORDER BY nama_MK
+
+SELECT nama, nama_MK, nil_mid, nil_fin
+FROM prestasi
+INNER JOIN matakuliah
+ON prestasi.`Kode_MK`=matakuliah.`Kode_MK`
+INNER JOIN mahasiswa
+ON prestasi.`NIM`=mahasiswa.`NIM`
+WHERE matakuliah.`Kode_MK`=IF221

@@ -1,0 +1,104 @@
+	MEMBUAT DATABASE RUMAH SAKIT DAN MENGIMPLEMENTASIKAN QUERY ACCESS MULTIPLE TABLE SERTA PERBANDINGANNYA
+						
+						Laporan
+			Diajukan Untuk Memenuhi  Salah Satu Tugas Mandiri Mata Kuliah	
+					Praktikum Sistem Basis Data
+						Program Sarjana
+ 
+
+Disusun Oleh :
+Shofi Mardiyah Salsabilla
+(1127050141)
+IF’A
+
+			UNIVERSITAS ISLAM NEGRI SUNAN GUNUNG DJATI BANDUNG
+				SAINS DAN TEKNOLOGI / TEKNIK INFORMATIKA
+					1435 H / 2014 M
+
+
+
+??? ???? ??????? ???????
+		Laporan Praktikum Basis Data
+
+
+> Implementasi Inner Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality, Hari, Jam
+FROM datadokter
+INNER JOIN speciality
+ON datadokter.`Doc_Id`=speciality.`Doc_Id`
+INNER JOIN timeschedule
+ON datadokter.`Doc_Id`=timeschedule.`Doc_Id`
+WHERE datadokter.`Doc_Id`=11
+
+> Implementasi Cross Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality, Hari, Jam
+FROM datadokter
+CROSS JOIN speciality
+ON datadokter.`Doc_Id`=speciality.`Doc_Id`
+CROSS JOIN timeschedule
+ON datadokter.`Doc_Id`=timeschedule.`Doc_Id`
+WHERE datadokter.`Doc_Id`=12
+
+> Implementasi Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality, Hari, Jam
+FROM datadokter
+JOIN speciality
+ON datadokter.`Doc_Id`=speciality.`Doc_Id`
+JOIN timeschedule
+ON datadokter.`Doc_Id`=timeschedule.`Doc_Id`
+WHERE datadokter.`Doc_Id`=13
+
+> Implementasi Straight Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality, Hari, Jam
+FROM datadokter AS D
+STRAIGHT_JOIN Speciality AS S 
+STRAIGHT_JOIN TimeSchedule AS T
+WHERE D.`Doc_Id`=S.`Doc_Id` AND S.`Doc_Id`=T.`Doc_Id` AND Jam>14.00
+ORDER BY Nama
+
+> Implementasi Left Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Hari, Jam
+FROM datadokter AS D
+LEFT JOIN TimeSchedule AS T
+ON D.`Doc_Id`=T.`Doc_Id`
+ORDER BY Nama
+
+> Implementasi Right Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality
+FROM datadokter AS D
+RIGHT JOIN Speciality AS S
+ON D.`Doc_Id`=S.`Doc_Id`
+ORDER BY Nama
+
+> Implementasi Natural Join Pada DataBase Rumah Sakit
+
+SELECT Nama, Speciality, Hari, Jam
+FROM datadokter AS D
+NATURAL JOIN Speciality AS S
+NATURAL JOIN TimeSchedule AS T
+WHERE Jam>13.00
+ORDER BY Nama
+
+> List Fungsi Yang Paling Cepat Dalam Prosesnya
+
+Dari keseluruhan fungsi perintah yang digunakan dalam database Rumah Sakit, diantaranya penggunaan perintah :
+-	Inner Join
+-	Cross Join
+-	Join
+-	Straight Join
+-	Left Join
+-	Right Join
+-	Natural Join
+Yang paling cepat daam proses penggunaannya adalah Perintah Natural Join. 
+Alasan cepat proses penggunaannya adalah letak relasinya tidak harus dijabarkan 
+dengan ketentuan bahwa Doc_Id pada tiap table yang akan direlasikan harus sama, 
+letak relasinya tidak ditentukan oleh Primary Key atau Foreign Key yang memiliki record yang sama, 
+tapi dari perintah Natural Join nya itu sendiri.
+Namun diantara Inner Join, Cross Join dan Join, 
+maka yang lebih cepat proses penggunaannya dalam menampilkan relasi adalah Inner Join. 
